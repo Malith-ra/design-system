@@ -29,10 +29,6 @@ const Template: Story<DropdownProps> = (args) => <Dropdown {...args} />;
 
 export const Filled = Template.bind({});
 
-export const Outline = Template.bind({});
-
-export const Flat = Template.bind({});
-
 Filled.args = {
   variant: "filled",
   children: "Dropdown",
