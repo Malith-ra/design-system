@@ -3,7 +3,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import postcss from "rollup-plugin-postcss";
 import dts from "rollup-plugin-dts";
-
+import { nodeResolve } from "@rollup/plugin-node-resolve";
 //NEW
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from "rollup-plugin-peer-deps-external";
@@ -28,7 +28,7 @@ export default [
     plugins: [
       // NEW
       peerDepsExternal(),
-
+      nodeResolve(),
       resolve(),
       commonjs(),
       typescript({ tsconfig: "./tsconfig.json" }),
