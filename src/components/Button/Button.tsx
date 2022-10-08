@@ -1,12 +1,43 @@
-import React from "react";
-export interface ButtonProps {
-  label: string;
+import React, { HTMLAttributes } from "react";
+
+export interface Props extends HTMLAttributes<HTMLButtonElement> {
+  variant: "filled" | "outline";
+  children: React.ReactNode;
+  className?: string;
+  icon?: React.ReactElement;
+
+  // TODO: Remove once the test is done
+  opticalTestMultiplier?: number;
 }
 
-const Button = (props: ButtonProps) => {
+let styles = {
+  filled: "border bg-primary-red text-white border-primary-red",
+  outline: "border border-primary-cherry text-primary-red",
+};
+
+const Button = ({
+  variant = "filled",
+  children,
+  className,
+  icon,
+  opticalTestMultiplier = 0,
+  ...props
+}: Props) => {
   return (
-    <button className="border border-red-800 px-4 py-2 text-lg">
-      {props.label}
+    <button
+      className={`flex items-center justify-center font-semibold hover:opacity-80 disabled:border-ash-200 disabled:bg-ash-100 disabled:text-ash-200 ${styles[variant]} ${className}`}
+      {...props}
+    >
+      {icon && <div className="-translate-y-[1.5px]">{icon}</div>}
+      <span
+        className="flex items-center"
+        style={{
+          lineHeight: "1em",
+          transform: `translateY(${opticalTestMultiplier}px)`,
+        }}
+      >
+        {children}
+      </span>
     </button>
   );
 };

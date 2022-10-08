@@ -1,6 +1,6 @@
 {
   "name": "design-system-ooredoo",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "A react component library",
   "scripts": {
     "rollup": "rollup -c",
